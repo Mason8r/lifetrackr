@@ -1,10 +1,13 @@
 <?php 
+include_once 'library/Controller.php';
 
-Class Login {
+Class Login extends Controller {
 	
 	public function attempt($details) 
 	{
-		$conn = new mysqli('localhost','root','password','lifetrackr');
+
+		$conn = $this->dbConnect();
+
 		$result = $conn->query("select * from users where email='".$details['username']."' and password='".sha1($details['password'])."'");
 		if($result->num_rows==1) {
 			$user = $result->fetch_assoc();

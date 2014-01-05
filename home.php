@@ -1,7 +1,7 @@
 <?php
 session_start();
-include('library/Login.php');
-include('library/Things.php');
+include('library/includes.php');
+
 
 if(!$_SESSION['auth']) {
 	header('location: index.php');
